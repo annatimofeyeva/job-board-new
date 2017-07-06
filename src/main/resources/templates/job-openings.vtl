@@ -1,0 +1,15 @@
+<!--job-openings.vtl-->
+<h1>Job Openings</h1>
+
+#if ($jobs)
+  <ul>
+    #foreach ($job in $jobs)
+      <li><a href="/job-openings/$job.getId()">$job.getTitle()</a></li>
+    #end
+  </ul>
+#else
+  <p>No jobs!</p>
+#end
+
+<a href="/job-openings/new">Add New Job</a>
+<!--job-openings.vtl-->
