@@ -3,6 +3,11 @@ import static org.junit.Assert.*;
 
 public class CityTest {
 
+  @Before
+  public void tearDown() {
+    City.clear();
+  }
+
   @Test
   public void city_instantiatesCorrectly_true() {
     City testCity = new City("Seattle");
@@ -27,7 +32,7 @@ public class CityTest {
   public void clear_emptiesAllCitiesFromList_0() {
     City testCity = new City("Seattle");
     City.clear();
-    assertEquals(City.all().size(), 0);
+    assertEquals(0, City.all().size());
   }
 
   @Test
@@ -38,7 +43,7 @@ public class CityTest {
 
   @Test
   public void find_returnsCityWithSameId_secondCity() {
-    City.clear();
+    //City.clear();
     City firstCity = new City("Seattle");
     City secondCity = new City("Portland");
     assertEquals(City.find(secondCity.getId()), secondCity);
@@ -46,7 +51,7 @@ public class CityTest {
 
   @Test
   public void getJobs_initiallyReturnsEmptyList_ArrayList() {
-    City.clear();
+    //City.clear();
     City testCity = new City("Seattle");
     assertEquals(0, testCity.getJobs().size());
   }
