@@ -30,9 +30,8 @@ public class App {
       String title = request.queryParams("title");
       String description = request.queryParams("description");
       String contact = request.queryParams("contact");
-      String city = request.queryParams("city");
 
-      JobOpening newJobOpening = new JobOpening(title, description, contact, city);
+      JobOpening newJobOpening = new JobOpening(title, description, contact);
       jobs.add(newJobOpening);
 
       model.put("template", "templates/success.vtl");
