@@ -1,11 +1,14 @@
 <!--city.vtl-->
-<h1>$city.getName() jobs:</h1>
-
-<ul>
-  #foreach($job in $city.getJobs())
-   <li>$job.getTitle()</li>
-  #end
-</ul>
+#if ($city)
+  <h1>$city.getName() jobs:</h1>
+  <ul>
+    #foreach($job in $city.getJobs())
+     <li>$job.getTitle()</li>
+    #end
+  </ul>
+#else
+  <em><p>Oops! We can't seem to find that City.</p></em>
+#end
 
 
 <a href="/cities/$city.getId()/job-openings/new">Add a new job</a>

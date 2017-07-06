@@ -32,10 +32,6 @@ public class City {
     return mId;
   }
 
-  public static City find(int id) {
-    return instances.get(id - 1);
-  }
-
   //Returns a City's list of JobOpenings.
   public List<JobOpening> getJobs() {
     return mJobOpenings;
@@ -45,5 +41,13 @@ public class City {
   public void addJobOpening(JobOpening jobOpening) {
     mJobOpenings.add(jobOpening);
   }
+
+  public static City find(int id) {
+  try {
+    return instances.get(id - 1);
+  } catch (IndexOutOfBoundsException exception) {
+    return null;
+  }
+}
 
 }

@@ -63,4 +63,9 @@ public class CityTest {
     testCity.addJobOpening(testJobOpening);
     assertTrue(testCity.getJobs().contains(testJobOpening));
   }
+
+  @Test
+  public void find_returnsNullWhenNoJobOpeningFound_null() {
+    assertTrue(City.find(999) == null);
+  }
 }

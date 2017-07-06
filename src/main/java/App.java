@@ -76,12 +76,20 @@ public class App {
     get("/cities/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       City city = City.find(Integer.parseInt(request.params(":id")));
+      // model.put("jobs", city.getJobs());
+      System.out.println(city.getJobs());
       model.put("city", city);
       model.put("template", "templates/city.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/job-openings", (request, response) -> {
+    get("/job-openings/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/job-opening-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/new-job-openings", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
       City city = City.find(Integer.parseInt(request.queryParams("cityId")));
